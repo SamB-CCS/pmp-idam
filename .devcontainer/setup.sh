@@ -12,11 +12,23 @@ bundle install
 echo "Installing JS packages with Bun..."
 bun install
 
-echo "Setting up database..."
-bundle exec rails db:create db:migrate db:seed 2>/dev/null || bundle exec rails db:migrate
+echo "Writing .env.local..."
+cat > /workspace/.env.local << EOF
+PGHOST=db
+PGPORT=5432
+PGUSER=postgres
+PGPASSWORD=postgres
+DATABASE_URL=postgres://postgres:postgres@db:5432/pmp_idam_development
+PRINT_MARKET_PLACE_KEYCLOAK_URL=http://keycloak:8080
+BUN_INSTALL=/root/.bun
+PATH=/root/.bun/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+EOF
 
-echo "Installing i18n-tasks..."
-gem install i18n-tasks
+echo "Precompiling assets..."
+SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile
+
+echo "Setting up database..."
+bundle exec rails db:create db:migrate
 
 echo "Setup complete! Run 'bin/dev' to start the app on port 3000."
 echo "Keycloak is available at http://localhost:8080 (admin/admin)"

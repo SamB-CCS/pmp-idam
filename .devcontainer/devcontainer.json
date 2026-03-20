@@ -16,7 +16,6 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "shopify.ruby-lsp",
         "castwide.solargraph",
         "rebornix.ruby",
         "wingrunr21.vscode-ruby",
@@ -32,11 +31,6 @@
         "GitHub.vscode-pull-request-github"
       ],
       "settings": {
-        "ruby.format": "rubocop",
-        "[ruby]": {
-          "editor.defaultFormatter": "shopify.ruby-lsp",
-          "editor.formatOnSave": true
-        },
         "editor.formatOnSave": true,
         "solargraph.diagnostics": true,
         "solargraph.autocomplete": true
@@ -58,16 +52,6 @@
     "RAILS_ENV": "development",
     "BINDING": "0.0.0.0",
     "PRINT_MARKET_PLACE_KEYCLOAK_URL": "http://localhost:8080"
-  },
-
-  "secrets": {
-    "COGNITO_CLIENT_ID": { "description": "From AWS Cognito > App clients" },
-    "COGNITO_CLIENT_SECRET": { "description": "From AWS Cognito > App clients" },
-    "COGNITO_USER_POOL_ID": { "description": "From AWS Cognito > General settings" },
-    "COGNITO_AWS_REGION": { "description": "AWS region e.g. eu-west-2" },
-    "AWS_ACCESS_KEY": { "description": "AWS IAM access key" },
-    "AWS_SECRET_KEY": { "description": "AWS IAM secret key" },
-    "AUTH_USER_API_TOKEN": { "description": "Token for user auth API" }
   },
 
   "hostRequirements": {

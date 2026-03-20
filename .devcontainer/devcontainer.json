@@ -39,7 +39,7 @@
   },
 
   "initializeCommand": "echo 'Starting build...'",
-  "onCreateCommand": "apk add --no-cache git",
+  "onCreateCommand": "apk add --no-cache git postgresql-client",
   "postCreateCommand": "bash .devcontainer/setup.sh",
 
   "remoteEnv": {

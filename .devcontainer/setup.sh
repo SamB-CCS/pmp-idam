@@ -1,6 +1,13 @@
 #!/bin/bash
 set -e
 
+echo "Waiting for PostgreSQL to be ready..."
+until PGPASSWORD=postgres psql -h db -U postgres -c '\q' 2>/dev/null; do
+  echo "PostgreSQL is unavailable - sleeping"
+  sleep 2
+done
+echo "PostgreSQL is ready!"
+
 echo "Installing Bun..."
 curl -fsSL https://bun.sh/install | bash
 export BUN_INSTALL="$HOME/.bun"

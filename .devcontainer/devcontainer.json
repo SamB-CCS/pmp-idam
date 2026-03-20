@@ -4,15 +4,6 @@
   "service": "app",
   "workspaceFolder": "/workspace",
 
-  "features": {
-    "ghcr.io/devcontainers/features/ruby:1": {
-      "version": "3.4.7"
-    },
-    "ghcr.io/devcontainers/features/node:1": {
-      "version": "20"
-    }
-  },
-
   "customizations": {
     "vscode": {
       "extensions": [
@@ -51,7 +42,7 @@
   "remoteEnv": {
     "RAILS_ENV": "development",
     "BINDING": "0.0.0.0",
-    "PRINT_MARKET_PLACE_KEYCLOAK_URL": "http://localhost:8080"
+    "PRINT_MARKET_PLACE_KEYCLOAK_URL": "http://keycloak:8080"
   },
 
   "hostRequirements": {

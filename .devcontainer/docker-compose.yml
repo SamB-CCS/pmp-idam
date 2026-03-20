@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/workspace:cached
+      - bundle_cache:/usr/local/bundle
+      - bun_cache:/root/.bun
+    command: sleep infinity   # keeps container alive; bin/dev is run manually or via postCreateCommand
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@db:5432/pmp_idam_development
+      RAILS_ENV: development
+      BINDING: "0.0.0.0"
+      PRINT_MARKET_PLACE_KEYCLOAK_URL: http://keycloak:8080
+    depends_on:
+      - db
+      - keycloak
+    ports:
+      - "3000:3000"
+
+  db:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: pmp_idam_development
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:11.0.2
+    restart: unless-stopped
+    environment:
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+    ports:
+      - "8080:8080"
+
+volumes:
+  postgres_data:
+  bundle_cache:
+  bun_cache:

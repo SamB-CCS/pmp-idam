@@ -37,6 +37,8 @@
     "5432": { "label": "PostgreSQL", "onAutoForward": "silent" }
   },
 
+  "initializeCommand": "echo 'Starting build...'",
+  "onCreateCommand": "apk add --no-cache git",
   "postCreateCommand": "bash .devcontainer/setup.sh",
 
   "remoteEnv": {

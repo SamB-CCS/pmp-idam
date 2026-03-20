@@ -5,11 +5,12 @@ services:
     build:
       context: ..
       dockerfile: Dockerfile
+    user: root
     volumes:
       - ..:/workspace:cached
       - bundle_cache:/usr/local/bundle
       - bun_cache:/root/.bun
-    command: sleep infinity   # keeps container alive; bin/dev is run manually or via postCreateCommand
+    command: sleep infinity
     environment:
       DATABASE_URL: postgres://postgres:postgres@db:5432/pmp_idam_development
       RAILS_ENV: development

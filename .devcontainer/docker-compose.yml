@@ -16,6 +16,10 @@ services:
       RAILS_ENV: development
       BINDING: "0.0.0.0"
       PRINT_MARKET_PLACE_KEYCLOAK_URL: http://keycloak:8080
+      PGHOST: db
+      PGPORT: "5432"
+      PGUSER: postgres
+      PGPASSWORD: postgres
     depends_on:
       - db
       - keycloak
